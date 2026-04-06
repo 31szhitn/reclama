@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гид Модерн — Компетенции в модернизации станков с ЧПУ</title>
+    <!-- Подключаем только базовые стили Bootstrap (минимум) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        /* Печатный стиль */
+        @media print {
+            body { background: white; font-size: 12pt; }
+            .container { width: 100%; max-width: 1200px; }
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Helvetica', Arial, sans-serif;
+            color: #333;
+            background: #fff;
+            line-height: 1.4;
+        }
+        
+        /* Уменьшаем отступы */
+        .container {
+            max-width: 1100px;
+        }
+        
+        h1, h2, h3 {
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .header-print {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 20px 0;
+            margin: 10px 0 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .header-print img {
+            max-height: 70px;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 40px;
+            margin-bottom: 10px;
+        }
+        
+        .badge-competence {
+            background-color: #f4c10f;
+            color: #1e3c72;
+            font-weight: bold;
+            padding: 4px 15px;
+            border-radius: 30px;
+            display: inline-block;
+            margin: 3px;
+            font-size: 13px;
+        }
+        
+        /* Карточка компетенции */
+        .competence-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .competence-item {
+            background: #f8f9ff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #2a5298;
+        }
+        
+        .competence-item h4 {
+            color: #1e3c72;
+            margin-top: 0;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+        }
+        
+        .competence-item ul {
+            padding-left: 20px;
+            margin-bottom: 0;
+            font-size: 14px;
+        }
+        
+        .competence-item li {
+            margin-bottom: 3px;
+        }
+        
+        /* Карточка типовой задачи (стандартная) */
+        .case-card {
+            background: white;
+            border: 1px solid #e0e4e8;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+            page-break-inside: avoid;
+        }
+        
+        .case-title {
+            color: #1e3c72;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 10px;
+            border-left: 5px solid #f4c10f;
+            padding-left: 12px;
+        }
+        
+        .problem-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .problem, .solution {
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        .problem {
+            background-color: #fff5f5;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .solution {
+            background-color: #f0fff4;
+            border-left: 4px solid #28a745;
+        }
+        
+        .problem h5, .solution h5 {
+            margin-top: 0;
+            margin-bottom: 6px;
+            font-weight: bold;
+            font-size: 15px;
+        }
+        
+        /* Особая карточка для выделенных кейсов */
+        .special-card {
+            background: linear-gradient(145deg, #f8f9ff 0%, #e8ecf5 100%);
+            border: 2px solid #2a5298;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .special-title {
+            color: #1e3c72;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 2px solid #f4c10f;
+            padding-bottom: 8px;
+        }
+        
+        .supply-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        
+        .supply-list {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .supply-list h5 {
+            color: #2a5298;
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-weight: bold;
+            font-size: 16px;
+            border-left: 4px solid #f4c10f;
+            padding-left: 10px;
+        }
+        
+        .supply-list ul {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+        
+        .supply-list li {
+            margin-bottom: 6px;
+        }
+        
+        .benefits-list {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .benefits-list h5 {
+            color: #2a5298;
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-weight: bold;
+            font-size: 16px;
+            border-left: 4px solid #f4c10f;
+            padding-left: 10px;
+        }
+        
+        .benefits-list ul {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 6px;
+        }
+        
+        .benefits-list li:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        /* Контактная информация */
+        .contact-block {
+            background: #1e3c72;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0 10px;
+            text-align: center;
+        }
+        
+        .contact-block a {
+            color: #f4c10f;
+            text-decoration: none;
+        }
+        
+        .contact-block i {
+            margin-right: 8px;
+            width: 18px;
+        }
+        
+        .contact-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+            font-size: 16px;
+        }
+        
+        /* Блок для фото (пустой) */
+        .photo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+            justify-content: center;
+        }
+        
+        .photo-placeholder {
+            background: #eef2f7;
+            border: 2px dashed #2a5298;
+            border-radius: 8px;
+            width: 180px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2a5298;
+            font-size: 14px;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .competence-grid {
+                grid-template-columns: 1fr;
+            }
+            .problem-solution {
+                grid-template-columns: 1fr;
+            }
+            .supply-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Шапка -->
+        <div class="header-print">
+            <img src="/img/logo.png" alt="Гид Модерн" onerror="this.style.display='none'">
+            <h1 style="margin: 5px 0 3px; font-size: 28px;">Гид Модерн</h1>
+            <p style="font-size: 16px; opacity: 0.9; margin-bottom: 8px;">Модернизация станков с ЧПУ • Инжиниринг • Сервис</p>
+            <div>
+                <span class="badge-competence">100+ проектов по России</span>
+                <span class="badge-competence">Solution partner Siemens до 2022</span>
+                <span class="badge-competence">Работаем с 2006</span>
+            </div>
+        </div>
+
+        <!-- Кратко о нас -->
+        <div style="background: #f8f9ff; padding: 15px; border-radius: 8px; margin: 15px 0;">
+            <p style="font-size: 15px; margin: 0; text-align: center;">
+                <i class="fa fa-quote-left" style="color: #2a5298; margin-right: 8px;"></i>
+                Электроника — наша сильная сторона. Глубокое знание Siemens, опыт с GSK, Fanuc, Heidenhain.  
+                Работаем с любым оборудованием: от малых цехов до крупных заводов.  
+                Сложные и нестандартные задачи — наша специализация.
+            </p>
+        </div>
+
+        <!-- Ключевые компетенции -->
+        <h2 style="color: #1e3c72; margin: 20px 0 10px; border-left: 5px solid #f4c10f; padding-left: 12px; font-size: 20px;">
+            <i class="fa fa-cogs"></i> Наши основные направления
+        </h2>
+
+        <div class="competence-grid">
+            <div class="competence-item">
+                <h4><i class="fa fa-microchip"></i> Системы ЧПУ</h4>
+                <ul>
+                    <li><strong>Siemens:</strong> 808D, 828D, 840D, ONE. Работаем с Simotion.</li>
+                    <li><strong>GSK:</strong> Поставка и внедрение.</li>
+                    <li><strong>Fanuc, Heidenhain:</strong> Практический опыт.</li>
+                    <li>Разработка ПЛК, параметрирование, настройка приводов.</li>
+                </ul>
+            </div>
+            <div class="competence-item">
+                <h4><i class="fa fa-cubes"></i> Механика и сложные задачи</h4>
+                <ul>
+                    <li>Установка и настройка поворотных столов.</li>
+                    <li>Внедрение 5-осевой обработки (3+2 и синхронной).</li>
+                    <li>Компенсация погрешностей: температурная, люфтов ШВП.</li>
+                    <li>Восстановление механики, направляющих, ШВП.</li>
+                </ul>
+            </div>
+            <div class="competence-item">
+                <h4><i class="fa fa-bolt"></i> Электротехника</h4>
+                <ul>
+                    <li>Разработка схем в EPLAN, 3D-компоновка шкафов.</li>
+                    <li>Сборка электрошкафов управления "под ключ".</li>
+                    <li>Замена энкодеров, работа с Drive-Cliq.</li>
+                    <li>Интеграция измерительных систем: Renishaw, Blum, PIONEER.</li>
+                </ul>
+            </div>
+            <div class="competence-item">
+                <h4><i class="fa fa-truck"></i> Комплексные услуги</h4>
+                <ul>
+                    <li>Организация перевозки с контролем точности.</li>
+                    <li>Подбор и поставка новых станков.</li>
+                    <li>Пуско-наладка, обучение персонала.</li>
+                    <li>Конструкторские работы: проектирование узлов, оснастки.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Типовые задачи -->
+        <h2 style="color: #1e3c72; margin: 20px 0 10px; border-left: 5px solid #f4c10f; padding-left: 12px; font-size: 20px;">
+            <i class="fa fa-question-circle"></i> Типовые задачи, которые мы решаем
+        </h2>
+
+        <!-- Кейс 1: Модернизация -->
+        <div class="case-card">
+            <div class="case-title">Оборудование постоянно в простое? Хотите забыть о проблемах с запчастями и получить современный станок?</div>
+            <div class="problem-solution">
+                <div class="problem">
+                    <h5><i class="fa fa-exclamation-triangle"></i> Ситуация клиента</h5>
+                    <p>Старый станок часто ломается, оригинальные комплектующие сняты с производства или идут месяцами. Точность уже не та, производительность падает. Покупать новый — дорого.</p>
+                </div>
+                <div class="solution">
+                    <h5><i class="fa fa-check-circle"></i> Что мы предлагаем</h5>
+                    <p>Комплексная модернизация: новая система ЧПУ (Siemens/GSK), современные приводы и энкодеры. Вы получаете станок с точностью нового, современными функциями (3D-моделирование, контроль инструмента) и забудете о поиске старых запчастей. Срок окупаемости — значительно быстрее покупки нового станка.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Кейс 2: Диагностика -->
+        <div class="case-card">
+            <div class="case-title">Станок сломался, не можете найти причину? Приходили специалисты, но не помогло?</div>
+            <div class="problem-solution">
+                <div class="problem">
+                    <h5><i class="fa fa-exclamation-triangle"></i> Ситуация клиента</h5>
+                    <p>Оборудование встало. Ошибки неочевидны, "плавают". Вызванные специалисты разводят руками или предлагают менять всё подряд. Простой затягивается, потери растут.</p>
+                </div>
+                <div class="solution">
+                    <h5><i class="fa fa-check-circle"></i> Что мы предлагаем</h5>
+                    <p>Глубокая профессиональная диагностика. Мы знаем электронику и умеем искать сложные неисправности. Найдём первопричину, а не следствие. Предложим точный план ремонта.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Кейс 3: Новый станок -->
+        <div class="case-card">
+            <div class="case-title">Купили новый станок, но он работает не так, как хотели?</div>
+            <div class="problem-solution">
+                <div class="problem">
+                    <h5><i class="fa fa-exclamation-triangle"></i> Ситуация клиента</h5>
+                    <p>Станок есть, но никто не может его правильно настроить. Чего-то не хватает (опций, циклов, удобства). Хочется, чтобы работал по-другому / быстрее / точнее. Поставщик "сделал и ушёл", а обещания не выполнены.</p>
+                </div>
+                <div class="solution">
+                    <h5><i class="fa fa-check-circle"></i> Что мы предлагаем</h5>
+                    <p>Аудит того, что есть. Донастройка, параметрирование, оптимизация. Добавление недостающих функций и циклов. Доведём станок до состояния "как должно быть".</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Кейс 4: 5 осей -->
+        <div class="case-card">
+            <div class="case-title">Хотите добавить 4-ю и 5-ю оси на существующий станок?</div>
+            <div class="problem-solution">
+                <div class="problem">
+                    <h5><i class="fa fa-exclamation-triangle"></i> Ситуация клиента</h5>
+                    <p>Станок не позволяет обрабатывать детали с нескольких сторон за одну установку. Много переналадок, страдает точность, растёт время.</p>
+                </div>
+                <div class="solution">
+                    <h5><i class="fa fa-check-circle"></i> Что мы предлагаем</h5>
+                    <p>Подберём и установим поворотный стол. Интегрируем в ЧПУ (Siemens, GSK). Настроим кинематику для режимов 3+2 и 5-осевой обработки. Новые возможности без покупки станка.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Кейс 5: Измерения -->
+        <div class="case-card">
+            <div class="case-title">Хотите контролировать инструмент и деталь прямо на станке?</div>
+            <div class="problem-solution">
+                <div class="problem">
+                    <h5><i class="fa fa-exclamation-triangle"></i> Ситуация клиента</h5>
+                    <p>Ручной контроль занимает время. Часто возникает брак из-за износа инструмента.</p>
+                </div>
+                <div class="solution">
+                    <h5><i class="fa fa-check-circle"></i> Что мы предлагаем</h5>
+                    <p>Установим системы измерения (Renishaw, Blum, PIONEER). Настроим автоматическую коррекцию смещений в УП. Контроль в автоматическом цикле и снижение брака.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Кейс 6: Перевозка -->
+        <div class="case-card">
+            <div class="case-title">Планируете перевозку станка и боитесь потерять точность?</div>
+            <div class="problem-solution">
+                <div class="problem">
+                    <h5><i class="fa fa-exclamation-triangle"></i> Ситуация клиента</h5>
+                    <p>Нужно перевезти станок на другую площадку. При неправильной установке на новом месте точность обработки может сильно ухудшиться.</p>
+                </div>
+                <div class="solution">
+                    <h5><i class="fa fa-check-circle"></i> Что мы предлагаем</h5>
+                    <p>Организуем перевозку под нашим технадзором. Снимем архивы (на всякий случай), проверим точность до и после перевозки. На новом месте проведём пусконаладку и восстановим геометрию.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Кейс 7: Нестандартный станок -->
+        <div class="case-card">
+            <div class="case-title">Нужно разработать нестандартный станок или автоматическую линию?</div>
+            <div class="problem-solution">
+                <div class="problem">
+                    <h5><i class="fa fa-exclamation-triangle"></i> Ситуация клиента</h5>
+                    <p>Серийное оборудование не подходит. Нужна нестандартная кинематика, особые циклы, интеграция опций.</p>
+                </div>
+                <div class="solution">
+                    <h5><i class="fa fa-check-circle"></i> Что мы предлагаем</h5>
+                    <p>Своё КБ, механики, электронщики. Разработаем проект, документацию, соберём шкаф, напишем ПЛК и экранные маски (Create MyConfig). Готовый прототип с возможностью тиражирования.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Особый кейс: Поставка оборудования (с Voltech) -->
+        <div class="special-card">
+            <div class="special-title"><i class="fa fa-truck" style="margin-right: 10px;"></i> Поставляем оборудование</div>
+            
+            <div class="supply-grid">
+                <div class="supply-list">
+                    <h5><i class="fa fa-cube"></i> Что поставляем</h5>
+                    <ul>
+                        <li><strong>Системы ЧПУ GSK</strong></li>
+                        <li><strong>Комплектующие Siemens</strong> (под заказ и в наличии)</li>
+                        <li><strong>Энкодеры, приводы, двигатели</strong></li>
+                        <li><strong>Измерительные системы</strong> Renishaw, Blum, PIONEER</li>
+                        <li><strong>Поворотные столы и оснастка</strong></li>
+                        <li><strong>Новые станки</strong> — подбор под вашу задачу</li>
+                        <li><strong>Гофрозащиты для станков</strong> по вашим размерам, телескопические защиты, гофрозащиты со стальными жалюзями</li>
+                        <li><strong>ШВП класса точности до C3</strong> по чертежам заказчика</li>
+                        <li><strong>Высокоточные линейные направляющие качения</strong> — мы интеграторы компании Voltech, единственного производителя в России</li>
+                    </ul>
+                </div>
+                
+                <div class="benefits-list">
+                    <h5><i class="fa fa-star"></i> Плюсы поставки через нас</h5>
+                    <ul>
+                        <li>Поможем с выбором — знаем, что реально работает</li>
+                        <li>Поставляем с учётом совместимости с вашим оборудованием</li>
+                        <li>Можем сразу установить, настроить и запустить</li>
+                        <li>Гарантия на всё поставляемое оборудование</li>
+                        <li>Один поставщик вместо десяти — меньше головной боли</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Примеры работ (пустой блок под фото) -->
+        <h2 style="color: #1e3c72; margin: 20px 0 10px; border-left: 5px solid #f4c10f; padding-left: 12px; font-size: 20px;">
+            <i class="fa fa-image"></i> Примеры наших работ
+        </h2>
+        <div class="photo-grid">
+            <!-- Сюда вы вставите свои фото -->
+            <div class="photo-placeholder">Фото 1</div>
+            <div class="photo-placeholder">Фото 2</div>
+            <div class="photo-placeholder">Фото 3</div>
+            <div class="photo-placeholder">Фото 4</div>
+            <div class="photo-placeholder">Фото 5</div>
+            <div class="photo-placeholder">Фото 6</div>
+        </div>
+
+        <!-- Контактная информация -->
+        <div class="contact-block">
+            <h3 style="margin-top: 0; color: white; font-size: 20px;">Свяжитесь с нами</h3>
+            <div class="contact-row">
+                <div><i class="fa fa-phone"></i> 8 (843) 227-03-50</div>
+                <div><i class="fa fa-mobile"></i> 8 (843) 253-00-39</div>
+            </div>
+            <div class="contact-row" style="margin-top: 5px;">
+                <div><i class="fa fa-envelope"></i> sale@gidmodern.ru (поставки)</div>
+                <div><i class="fa fa-envelope"></i> vadimchekalov@yandex.ru (работы)</div>
+            </div>
+            <div style="margin-top: 12px; font-size: 15px;">
+                <i class="fa fa-map-marker"></i> 420095, Казань, ул. Восстания 104<br>
+                <span style="opacity: 0.9;">ПН–ПТ 8:30–17:30 (Мск)</span>
+            </div>
+            <p style="margin-top: 12px; font-size: 14px; opacity: 0.9; margin-bottom: 0;">
+                Работаем по всей России
+            </p>
+        </div>
+
+    </div><!-- /container -->
+</body>
+</html>
