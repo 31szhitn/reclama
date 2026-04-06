@@ -8,6 +8,19 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
+	
+	.photo-grid img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.photo-grid img:hover {
+    transform: scale(4.0);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 10;
+    position: relative;
+}
         /* Печатный стиль */
         @media print {
             body { background: white; font-size: 12pt; }
@@ -264,7 +277,7 @@
         .photo-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 80px;
             margin: 15px 0;
             justify-content: center;
         }
@@ -515,12 +528,21 @@
         </h2>
         <div class="photo-grid">
             <!-- Сюда вы вставите свои фото -->
-            <div class="photo-placeholder">Фото 1</div>
-            <div class="photo-placeholder">Фото 2</div>
-            <div class="photo-placeholder">Фото 3</div>
-            <div class="photo-placeholder">Фото 4</div>
-            <div class="photo-placeholder">Фото 5</div>
-            <div class="photo-placeholder">Фото 6</div>
+			<img src="img/work1.jpeg" alt="Модернизация станка" style="width: 180px; height: 120px; object-fit: cover; border-radius: 8px;">            
+			<img src="img/work2.jpeg" alt="Модернизация станка" style="width: 180px; height: 120px; object-fit: cover; border-radius: 8px;">            
+			<img src="img/work3.jpeg" alt="Модернизация станка" style="width: 180px; height: 120px; object-fit: cover; border-radius: 8px;">            
+			<img src="img/work4.jpeg" alt="Модернизация станка" style="width: 180px; height: 120px; object-fit: cover; border-radius: 8px;">            
+			<img src="img/work5.jpeg" alt="Модернизация станка" style="width: 180px; height: 120px; object-fit: cover; border-radius: 8px;">            
+			<img src="img/work6.jpeg" alt="Модернизация станка" style="width: 180px; height: 120px; object-fit: cover; border-radius: 8px;">            
+			<img src="img/work7.jpeg" alt="Модернизация станка" style="width: 180px; height: 120px; object-fit: cover; border-radius: 8px;">            
+			<img src="img/work8.jpeg" alt="Модернизация станка" style="width: 180px; height: 120px; object-fit: cover; border-radius: 8px;">            
+			<img src="img/work9.jpeg" alt="Модернизация станка" style="width: 180px; height: 120px; object-fit: cover; border-radius: 8px;">            
+			<img src="img/work10.jpeg" alt="Модернизация станка" style="width: 180px; height: 120px; object-fit: cover; border-radius: 8px;">            
+			<img src="img/work11.jpeg" alt="Модернизация станка" style="width: 180px; height: 120px; object-fit: cover; border-radius: 8px;">            
+			<img src="img/work12.jpeg" alt="Модернизация станка" style="width: 180px; height: 120px; object-fit: cover; border-radius: 8px;">            
+			<img src="img/work13.jpeg" alt="Модернизация станка" style="width: 180px; height: 120px; object-fit: cover; border-radius: 8px;">            
+			<img src="img/work14.jpeg" alt="Модернизация станка" style="width: 180px; height: 120px; object-fit: cover; border-radius: 8px;">            
+			<img src="img/work15.jpeg" alt="Модернизация станка" style="width: 180px; height: 120px; object-fit: cover; border-radius: 8px;">            
         </div>
 
         <!-- Контактная информация -->
